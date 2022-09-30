@@ -1,13 +1,13 @@
 {
   "name": "schtasks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Windows scheduled tasks",
   "main": "index.js",
   "scripts": {
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daack/schtasks.git"
+    "url": "git+https://github.com/jsevilla274/schtasks.git"
   },
   "keywords": [
     "schtasks"
@@ -15,9 +15,9 @@
   "author": "Matteo Maselli <mat.maselli@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daack/schtasks/issues"
+    "url": "https://github.com/jsevilla274/schtasks/issues"
   },
-  "homepage": "https://github.com/daack/schtasks#readme",
+  "homepage": "https://github.com/jsevilla274/schtasks#readme",
   "dependencies": {
     "sudo-prompt": "^8.1.0",
     "xml2js": "^0.4.19"
