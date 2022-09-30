@@ -20,8 +20,12 @@ const mapping = {
   enddate: '/ED',
   level: '/RL',
   enable: '/ENABLE',
-  disable: '/DISABLE'
+  disable: '/DISABLE',
+  interactive: '/IT',
+  runasuser: '/RU'
 }
+
+const flags = new Set(['enable', 'disable', 'interactive']); // these options have no args, they are flags
 
 function mapFields (cmd) {
   return Object.keys(cmd).reduce((mapped, key) => {
@@ -33,7 +37,11 @@ function mapFields (cmd) {
       if (val instanceof Array)
         val = val.join(',')
 
-      mapped.push(val ? `${opt} ${val}` : opt)
+      if (flags.has(key)) {
+        mapped.push(opt)
+      } else {
+        mapped.push(val ? `${opt} ${val}` : opt)
+      }
     }
 
     return mapped
@@ -56,10 +64,7 @@ exports.create = function (task, cmd) {
     '/Create' 
   ])
 
-  fields.push(...[
-    '/RU SYSTEM',
-    '/F'  
-  ])
+  fields.push('/F')
 
   return exec(fields.join(' '), { name: task })
 }
@@ -132,8 +137,6 @@ exports.update = function (task, cmd) {
     'schtasks',
     '/Change' 
   ])
-
-  fields.push('/RU SYSTEM')
 
   return exec(fields.join(' '), { name: task })
 }
